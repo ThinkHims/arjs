@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>	</title>
+</head>
+<!-- AR.js by @jerome_etienne - github: https://github.com/jeromeetienne/ar.js - info: https://medium.com/arjs/augmented-reality-in-10-lines-of-html-4e193ea9fdbf -->
+<script src="js/aframe.min.js"></script>
+<script src="js/aframe-ar.js" type="text/javascript"></script>
+<script src="js/aframe-event-set-component.min.js"></script>
+<script src="custom.js"></script>
+<body style='margin : 0px; overflow: hidden;'>
+	<a-scene embedded arjs='sourceType: webcam; patternRatio: 0.8;'>
+		<a-assets>
+			<img id="linkedin" src="linkedin.png"/>
+		</a-assets>
+		<a-entity id="camera" camera="userHeight: 1.6" look-controls cursor="fuse:false; rayOrigin: mouse">
+			<!--
+			<a-box position='0 0.5 0' material='opacity: 0.5;'
+				event-set__enter="_event: mouseenter; color: #026fc9"
+	             event-set__leave="_event: mouseleave; color: #4CC3D9" id="test"></a-box> -->
+
+	             
+			<a-marker preset='custom' type="pattern" url='artifact_marker.patt'>
+				<a-image src="#linkedin" rotation="-90 0 0" position="0 0 0" id="icon_linkedin"/> 
+			</a-marker>
+		</a-entity>
+	</a-scene>
+	<script type="text/javascript">
+      document.getElementById("icon_linkedin").addEventListener("click",function(){
+        window.location="https://in.linkedin.com/company/artifact-design-studios";
+      });
+
+      document.getElementById("icon_linkedin").addEventListener("touchstart",function(){
+        // window.location="https://google.com";
+        alert(0);
+      });
+
+      //ontouchstart
+    </script>
+</body>
+</html>
